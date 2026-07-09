@@ -12,15 +12,12 @@ NewBook transforms your browser's new tab page into a clean, terminal-styled das
 
 ## Features
 
-- **Multi-engine search bar** — Google, Bing, DuckDuckGo, GitHub, Stack Overflow, and custom engines. Switch with a click or `Tab`.
-- **Bookmark card grid** — Bookmarks displayed as cards with favicons in a responsive auto-fill grid, grouped by folder.
-- **Folder drill-down** — Sub-folders rendered inline as collapsible sections, preserving visual hierarchy without deep nesting.
-- **Drag & drop** — Reorder bookmarks by dragging; drop onto folders or between cards.
-- **Three sort modes** — Cycle through `index` (browser order), `A-Z` (alphabetical), or `recent` (newest first).
-- **Middle-click open all** — Middle-click a folder name to open every bookmark inside it at once.
-- **Right-click context menu** — Edit, rename, or delete bookmarks and folders with confirmation dialogs.
-- **Terminal dark theme** — Warm black palette with dual-font system (sans-serif titles, monospace domains), `>_` prompts, and subtle hover animations.
-- **100% local** — Zero network requests. No analytics, no telemetry, no external dependencies.
+- **Multi-engine search** — Google, Bing, DuckDuckGo, GitHub, Stack Overflow, or add your own. Switch engines with a click or `Tab`.
+- **Bookmark cards** — bookmarks displayed as responsive cards grouped by folder, with favicons and domain labels.
+- **Drag & drop** — move bookmarks between folders or reorder by dragging.
+- **Sort modes** — cycle between browser order, alphabetical, or recently added.
+- **Terminal dark theme** — warm black palette, `>_` prompts, dual-font typography.
+- **Power-user shortcuts** — `Ctrl+K` to focus search, middle-click a folder to open all bookmarks, right-click to edit or delete.
 
 ## Privacy
 
@@ -28,7 +25,15 @@ NewBook runs entirely on your device — zero network requests, zero data collec
 
 ## Installation
 
-### From Source
+### Download (recommended)
+
+1. Go to [Releases](https://github.com/Cybx233/NewBook/releases) and download `newbook.zip`
+2. Unzip the file
+3. Open `chrome://extensions/` (or `edge://extensions/`), enable **Developer mode**
+4. Click **Load unpacked** and select the unzipped folder
+5. Open a new tab — done!
+
+### Build from source
 
 ```bash
 git clone https://github.com/Cybx233/NewBook.git
@@ -37,15 +42,7 @@ npm install
 npm run build
 ```
 
-Then:
-1. Open `chrome://extensions/` (or `edge://extensions/`)
-2. Enable **Developer mode**
-3. Click **Load unpacked** and select the `dist/` folder
-4. Open a new tab — you're done!
-
-### Chrome Web Store
-
-*Coming soon.*
+Then load the `dist/` folder as an unpacked extension.
 
 ## Development
 
