@@ -1,5 +1,7 @@
 # NewBook
 
+[English](README.md)
+
 > 极简 Chrome 新标签页扩展 — 搜索栏 + 书签卡片流
 
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)
@@ -90,12 +92,6 @@ src/
     ├── BookmarkCard.vue       # 单书签卡片（favicon + 点击/拖拽交互）
     └── ContextMenu.vue        # 右键菜单 + 编辑/新增/删除弹窗
 ```
-
-### 数据流
-
-- **书签**：`chrome.bookmarks.getTree()` → 递归拍平为 `ref<Record<string, BookmarkTreeNode>>`。不维护嵌套树结构，渲染时通过 `computed` 按 `parentId` 动态派生子节点。
-- **实时同步**：监听 `onCreated` / `onRemoved` / `onChanged` / `onMoved` 四个事件。事件入队 → 50ms 防抖 → 批量更新 bookmarkMap，不重新全量 `getTree()`。
-- **存储**：搜索引擎配置通过 `chrome.storage.sync` 持久化，排序偏好同样同步。
 
 ## 权限说明
 

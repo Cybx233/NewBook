@@ -1,5 +1,7 @@
 # NewBook
 
+[中文版](README_zh.md)
+
 > A minimalist Chrome extension that replaces the new tab page with a search bar and bookmark cards.
 
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)
@@ -90,12 +92,6 @@ src/
     ├── BookmarkCard.vue       # Single bookmark card (favicon + interactions)
     └── ContextMenu.vue        # Right-click menu + edit/new/delete modals
 ```
-
-### Data Flow
-
-- **Bookmarks**: `chrome.bookmarks.getTree()` → flattened into a single `ref<Record<string, BookmarkTreeNode>>`. Children are derived on the fly via `computed` filtered by `parentId`.
-- **Live Sync**: Listens to `onCreated` / `onRemoved` / `onChanged` / `onMoved` events. Events are queued and batch-applied with a 50ms debounce — no full `getTree()` re-fetch.
-- **Storage**: Search engine configuration persists via `chrome.storage.sync`. Sort mode preference is also synced.
 
 ## Permissions
 
