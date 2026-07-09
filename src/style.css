@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terminal-bg: #0f0e0d;
+  --color-terminal-card: #181715;
+  --color-terminal-card-deep: #131313;
+  --color-terminal-input: #1a1a1a;
+  --color-terminal-border: #252525;
+  --color-terminal-border-hover: #3a3a3a;
+  --color-terminal-text: #e0e0e0;
+  --color-terminal-text-secondary: #a0a0a0;
+  --color-terminal-text-muted: #666666;
+  --color-terminal-text-dim: #444444;
+  --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'SF Mono', 'Fira Code', monospace;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.skeleton {
+  animation: breathe 1.5s ease-in-out infinite;
+}
+
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: max-height 0.22s ease, opacity 0.2s ease;
+  overflow: hidden;
+}
+.collapse-enter-from,
+.collapse-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+.collapse-enter-to,
+.collapse-leave-from {
+  max-height: 2000px;
+  opacity: 1;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewBook</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="icon16.png" />
+    <style>
+      body {
+        margin: 0;
+        background: #0f0e0d;
+        color: #e0e0e0;
+        font-family: "JetBrains Mono", "Cascadia Code", "SF Mono", "Fira Code", monospace;
+      }
+      .skeleton-shell {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 80px 40px 40px;
+      }
+      .skeleton-search {
+        height: 48px;
+        background: #1a1a1a;
+        border: 1px solid #1e1e1e;
+        border-radius: 8px;
+        margin-bottom: 40px;
+        animation: breathe 1.5s ease-in-out infinite;
+      }
+      .skeleton-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 8px;
+      }
+      .skeleton-card {
+        height: 52px;
+        background: #181818;
+        border: 1px solid #1e1e1e;
+        border-radius: 8px;
+        animation: breathe 1.5s ease-in-out infinite;
+      }
+      @keyframes breathe {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.8; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="skeleton-shell">
+        <div class="skeleton-search"></div>
+        <div class="skeleton-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "NewBook",
+  "version": "1.0.0",
+  "description": "轻量新标签页 — 搜索栏 + 书签卡片流",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["bookmarks", "storage", "favicon"],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
