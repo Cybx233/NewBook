@@ -40,7 +40,7 @@ The [Content Security Policy](manifest.json) explicitly blocks all outbound conn
 ### From Source
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/newbook.git
+git clone https://github.com/Cybx233/NewBook.git
 cd newbook
 npm install
 npm run build
