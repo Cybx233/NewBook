@@ -24,18 +24,7 @@ NewBook transforms your browser's new tab page into a clean, terminal-styled das
 
 ## Privacy
 
-NewBook makes **no network requests**. Every feature runs entirely on your device:
-
-| Concern | Status |
-|---------|--------|
-| External fonts (Google Fonts) | ❌ Removed — system fonts only |
-| Favicon loading | ✅ Chrome's built-in `_favicon` API (local) |
-| Search queries | ✅ Opened directly in new tabs — no intermediary |
-| Analytics / telemetry | ❌ None |
-| Data storage | ✅ `chrome.storage.sync` (search engine config only) |
-| Bookmarks | ✅ Read/written directly via `chrome.bookmarks` API |
-
-The [Content Security Policy](manifest.json) explicitly blocks all outbound connections (`connect-src 'none'`).
+NewBook runs entirely on your device — zero network requests, zero data collection.
 
 ## Installation
 
