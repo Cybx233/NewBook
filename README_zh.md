@@ -10,6 +10,8 @@
 
 NewBook 将浏览器的新标签页变为一个干净、终端风格的控制面板。它直接读取你的浏览器书签，按文件夹分组展示为整齐的书签卡片 — 无后端、无云同步、无追踪。
 
+![截图](screenshots/screenshot.png)
+
 ## 功能特性
 
 - **多引擎搜索** — 内置 Google、Bing、DuckDuckGo、GitHub、Stack Overflow，支持自定义引擎。点击或 `Tab` 切换。

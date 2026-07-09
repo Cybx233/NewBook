@@ -10,6 +10,8 @@
 
 NewBook transforms your browser's new tab page into a clean, terminal-styled dashboard. It reads your bookmarks directly from the browser and displays them as organized cards grouped by folder — no backend, no cloud sync, no tracking.
 
+![Screenshot](screenshots/screenshot.png)
+
 ## Features
 
 - **Multi-engine search** — Google, Bing, DuckDuckGo, GitHub, Stack Overflow, or add your own. Switch engines with a click or `Tab`.
