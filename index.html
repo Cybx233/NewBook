@@ -6,10 +6,19 @@
     <title>NewBook</title>
     <link rel="icon" type="image/png" sizes="16x16" href="icon16.png" />
     <style>
+      /* Inline minimal theme defaults so the skeleton paints in-theme
+         before the bundled CSS loads. Mirrors style.css :root block. */
+      :root {
+        --t-bg: #0f0e0d;
+        --t-card: #181715;
+        --t-input: #1a1a1a;
+        --t-border-subtle: #1e1e1e;
+        --t-text: #e0e0e0;
+      }
       body {
         margin: 0;
-        background: #0f0e0d;
-        color: #e0e0e0;
+        background: var(--t-bg);
+        color: var(--t-text);
         font-family: "JetBrains Mono", "Cascadia Code", "SF Mono", "Fira Code", monospace;
       }
       .skeleton-shell {
@@ -19,8 +28,8 @@
       }
       .skeleton-search {
         height: 48px;
-        background: #1a1a1a;
-        border: 1px solid #1e1e1e;
+        background: var(--t-input);
+        border: 1px solid var(--t-border-subtle);
         border-radius: 8px;
         margin-bottom: 40px;
         animation: breathe 1.5s ease-in-out infinite;
@@ -32,8 +41,8 @@
       }
       .skeleton-card {
         height: 52px;
-        background: #181818;
-        border: 1px solid #1e1e1e;
+        background: var(--t-card);
+        border: 1px solid var(--t-border-subtle);
         border-radius: 8px;
         animation: breathe 1.5s ease-in-out infinite;
       }
@@ -42,6 +51,18 @@
         50% { opacity: 0.8; }
       }
     </style>
+    <!-- Pre-flash: set data-theme from storage before Vue mounts -->
+    <script>
+      (function() {
+        if (typeof chrome !== 'undefined' && chrome.storage) {
+          chrome.storage.sync.get('theme', function(result) {
+            if (result.theme) {
+              document.documentElement.dataset.theme = result.theme;
+            }
+          });
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="app">

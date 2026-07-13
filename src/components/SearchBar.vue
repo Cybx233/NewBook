@@ -1,10 +1,28 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useSearchEngine } from '../composables/useSearchEngine.js'
+
+const CATEGORY_LABELS = { search: '搜索', ai: 'AI 对话', custom: '自定义' }
 
 const emit = defineEmits(['openSettings'])
 
 const { engines, currentEngine, loaded, loadEngines, selectEngine, search } = useSearchEngine()
+
+const groupedEngines = computed(() => {
+  const groups = {}
+  for (const e of engines.value) {
+    const cat = e.category || 'custom'
+    if (!groups[cat]) groups[cat] = []
+    groups[cat].push(e)
+  }
+  const order = ['search', 'ai', 'custom']
+  return order
+    .filter(cat => groups[cat]?.length)
+    .map(cat => ({
+      label: CATEGORY_LABELS[cat] || '',
+      engines: groups[cat],
+    }))
+})
 
 const query = ref('')
 const showEngineList = ref(false)
@@ -64,7 +82,7 @@ onUnmounted(() => {
       <!-- 引擎切换 pill -->
       <button
         type="button"
-        class="flex-shrink-0 flex items-center gap-1 px-2.5 py-1 rounded text-xs bg-[#1a1a1a] border border-terminal-border text-terminal-text-secondary hover:text-terminal-text hover:border-terminal-border-hover transition-colors"
+        class="flex-shrink-0 flex items-center gap-1 px-2.5 py-1 rounded text-xs bg-terminal-input border border-terminal-border text-terminal-text-secondary hover:text-terminal-text hover:border-terminal-border-hover transition-colors"
         @click="showEngineList = !showEngineList"
       >
         <span>{{ currentEngine?.name || 'Search' }}</span>
@@ -108,16 +126,25 @@ onUnmounted(() => {
       v-if="showEngineList"
       class="absolute top-full left-0 mt-1.5 w-52 bg-terminal-card border border-terminal-border rounded-lg shadow-xl overflow-hidden z-50"
     >
-      <button
-        v-for="engine in engines"
-        :key="engine.id"
-        class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-left hover:bg-terminal-input transition-colors"
-        :class="engine.id === currentEngine?.id ? 'text-terminal-text bg-terminal-input' : 'text-terminal-text-secondary'"
-        @click="onSelectEngine(engine)"
-      >
-        <span>{{ engine.name }}</span>
-        <span v-if="engine.id === currentEngine?.id" class="ml-auto text-terminal-text-muted">&#10003;</span>
-      </button>
+      <template v-for="(group, gIdx) in groupedEngines" :key="gIdx">
+        <!-- 分组标签 -->
+        <div
+          v-if="group.label"
+          class="px-3.5 pt-2.5 pb-1 text-[10px] font-medium text-terminal-text-muted/50 uppercase tracking-wider"
+        >{{ group.label }}</div>
+        <button
+          v-for="engine in group.engines"
+          :key="engine.id"
+          class="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs text-left hover:bg-terminal-input transition-colors"
+          :class="engine.id === currentEngine?.id ? 'text-terminal-text bg-terminal-input' : 'text-terminal-text-secondary'"
+          @click="onSelectEngine(engine)"
+        >
+          <span>{{ engine.name }}</span>
+          <span v-if="engine.id === currentEngine?.id" class="ml-auto text-terminal-text-muted">&#10003;</span>
+        </button>
+        <!-- 分隔线 -->
+        <div v-if="group.label && gIdx < groupedEngines.length - 1" class="mx-3 border-t border-terminal-border" />
+      </template>
     </div>
 
     <div v-if="showEngineList" class="fixed inset-0 z-40" @click="showEngineList = false" />
@@ -126,7 +153,6 @@ onUnmounted(() => {
 
 <style scoped>
 .search-form:focus-within {
-  border-color: #444;
-  box-shadow: 0 0 0 1px #2a2a2a;
+  border-color: var(--t-accent);
 }
 </style>

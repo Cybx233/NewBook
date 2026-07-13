@@ -264,9 +264,10 @@ function onFolderMouseDown(e) {
     <div
       class="flex items-center gap-1.5 cursor-pointer select-none group/title rounded mb-1.5 py-[5px]"
       :class="{
-        'border-b border-[#1e1e1e] pb-1.5': !collapsed,
+        'border-b pb-1.5': !collapsed,
         'bg-terminal-input': isDragOver,
       }"
+      style="border-color: var(--t-border-subtle)"
       @click="toggleCollapse"
       @mousedown="onFolderMouseDown"
       @dragover="onDragOver"
@@ -274,9 +275,9 @@ function onFolderMouseDown(e) {
       @drop="onDrop"
     >
       <span class="w-3 flex-shrink-0 text-xs text-terminal-text-muted">{{ collapsed ? '▸' : '▾' }}</span>
-      <span class="text-xs text-terminal-text-secondary">&gt;_</span>
-      <span class="text-xs text-terminal-text-secondary group-hover/title:text-terminal-text transition-colors truncate">{{ folderNode.title }}</span>
-      <span class="text-[10px]" style="color: #383838">({{ children.length }})</span>
+      <span class="text-xs text-terminal-accent">&gt;_</span>
+      <span class="text-xs text-terminal-accent group-hover/title:text-terminal-text transition-colors truncate">{{ folderNode.title }}</span>
+      <span class="text-[10px] text-terminal-accent">({{ children.length }})</span>
     </div>
 
     <!-- 展开内容 -->
@@ -298,10 +299,10 @@ function onFolderMouseDown(e) {
           <div
             v-if="seg.showMorePrimary"
             class="flex items-center justify-center px-3.5 py-2.5 rounded-lg cursor-pointer select-none font-mono border bg-transparent"
-            style="border-style: dashed; border-color: #1e1e1e; border-width: 1px"
+            style="border-style: dashed; border-color: var(--t-border-subtle); border-width: 1px"
             @click.stop="togglePrimaryExpand"
           >
-            <span class="text-[11px]" style="color: #333">+ {{ moreCountPrimary }} more</span>
+            <span class="text-[11px]" style="color: var(--t-text-micro)">+ {{ moreCountPrimary }} more</span>
           </div>
         </div>
 
@@ -322,11 +323,11 @@ function onFolderMouseDown(e) {
             @mousedown="(e) => onSubMiddleClick(e, seg.data.folder.id)"
             @contextmenu.prevent="(e) => onSubContextMenu(e, seg.data.folder)"
           >
-            <span class="w-3 flex-shrink-0 text-[10px]" style="color: #2e2e2e">{{ seg.data.isCollapsed ? '▸' : '▾' }}</span>
-            <span class="text-[10px] flex-shrink-0" style="color: #2e2e2e">&gt;_</span>
-            <span class="text-[10px] flex-shrink-0" style="color: #3e3e3e">{{ seg.data.folder.title }}</span>
-            <span class="text-[10px] flex-shrink-0" style="color: #3e3e3e">({{ seg.data.total }})</span>
-            <span class="flex-1 ml-2" style="height: 0.5px; background: #1e1e1e; align-self: center"></span>
+            <span class="w-3 flex-shrink-0 text-[10px]" style="color: var(--t-text-micro)">{{ seg.data.isCollapsed ? '▸' : '▾' }}</span>
+            <span class="text-[10px] flex-shrink-0" style="color: var(--t-text-micro)">&gt;_</span>
+            <span class="text-[10px] flex-shrink-0" style="color: var(--t-text-micro)">{{ seg.data.folder.title }}</span>
+            <span class="text-[10px] flex-shrink-0" style="color: var(--t-text-micro)">({{ seg.data.total }})</span>
+            <span class="flex-1 ml-2" style="height: 0.5px; background: var(--t-border-subtle); align-self: center"></span>
           </div>
 
           <!-- 子文件夹书签 grid -->
@@ -343,10 +344,10 @@ function onFolderMouseDown(e) {
             <div
               v-if="seg.data.hasMore"
               class="flex items-center justify-center px-3.5 py-2.5 rounded-lg cursor-pointer select-none font-mono border bg-transparent"
-              style="border-style: dashed; border-color: #1e1e1e; border-width: 1px"
+              style="border-style: dashed; border-color: var(--t-border-subtle); border-width: 1px"
               @click.stop="toggleSubfolderExpand(seg.data.folder.id)"
             >
-              <span class="text-[11px]" style="color: #333">+ {{ seg.data.moreCount }} more</span>
+              <span class="text-[11px]" style="color: var(--t-text-micro)">+ {{ seg.data.moreCount }} more</span>
             </div>
           </div>
         </div>

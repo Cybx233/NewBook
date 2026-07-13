@@ -1,18 +1,123 @@
 @import "tailwindcss";
 
 @theme {
-  --color-terminal-bg: #0f0e0d;
-  --color-terminal-card: #181715;
-  --color-terminal-card-deep: #131313;
-  --color-terminal-input: #1a1a1a;
-  --color-terminal-border: #252525;
-  --color-terminal-border-hover: #3a3a3a;
-  --color-terminal-text: #e0e0e0;
-  --color-terminal-text-secondary: #a0a0a0;
-  --color-terminal-text-muted: #666666;
-  --color-terminal-text-dim: #444444;
+  /* Terminal tokens — aliased to dynamic CSS variables for theme switching */
+  --color-terminal-bg: var(--t-bg);
+  --color-terminal-card: var(--t-card);
+  --color-terminal-card-deep: var(--t-card-deep);
+  --color-terminal-input: var(--t-input);
+  --color-terminal-border: var(--t-border);
+  --color-terminal-border-hover: var(--t-border-hover);
+  --color-terminal-text: var(--t-text);
+  --color-terminal-text-secondary: var(--t-text-secondary);
+  --color-terminal-text-muted: var(--t-text-muted);
+  --color-terminal-text-dim: var(--t-text-dim);
+  --color-terminal-text-domain: var(--t-text-domain);
+  --color-terminal-text-micro: var(--t-text-micro);
+  --color-terminal-accent: var(--t-accent);
+  --color-terminal-danger: var(--t-danger);
+  --color-terminal-favicon-bg: var(--t-favicon-bg);
+  --color-terminal-pressed: var(--t-pressed);
+  --color-terminal-border-subtle: var(--t-border-subtle);
+  --color-terminal-shadow: var(--t-shadow);
   --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Cascadia Code', 'SF Mono', 'Fira Code', monospace;
+}
+
+/* ========================================
+   Theme: 墨色 (Sumi Ink) — default / dark warm
+   ======================================== */
+:root, [data-theme="ink"] {
+  --t-bg: #0f0e0d;
+  --t-card: #181715;
+  --t-card-deep: #131313;
+  --t-input: #1a1a1a;
+  --t-border: #252525;
+  --t-border-hover: #3a3a3a;
+  --t-text: #e0e0e0;
+  --t-text-secondary: #a0a0a0;
+  --t-text-muted: #666666;
+  --t-text-dim: #444444;
+  --t-favicon-bg: #1c1c1c;
+  --t-pressed: #1e1c1a;
+  --t-text-domain: #555555;
+  --t-text-micro: #383838;
+  --t-border-subtle: #1e1e1e;
+  --t-accent: #b0a89c;
+  --t-shadow: rgba(0, 0, 0, 0.35);
+  --t-danger: #ef4444;
+}
+
+/* ========================================
+   Theme: 宣纸 (Rice Paper) — light warm
+   ======================================== */
+[data-theme="rice"] {
+  --t-bg: #f6f1e8;
+  --t-card: #fdfaf3;
+  --t-card-deep: #f0e8d8;
+  --t-input: #f2ece0;
+  --t-border: #d9d0bc;
+  --t-border-hover: #bfb598;
+  --t-text: #2c2216;
+  --t-text-secondary: #6b5e48;
+  --t-text-muted: #a89880;
+  --t-text-dim: #c8bfa8;
+  --t-favicon-bg: transparent;
+  --t-pressed: #f0e8d4;
+  --t-text-domain: #7a6e58;
+  --t-text-micro: #b8a888;
+  --t-border-subtle: #d9d0bc;
+  --t-accent: #b5502e;
+  --t-shadow: rgba(0, 0, 0, 0.10);
+  --t-danger: #c53030;
+}
+
+/* ========================================
+   Theme: 青墨 (Blue Ink) — dark cool
+   ======================================== */
+[data-theme="blue"] {
+  --t-bg: #0e1217;
+  --t-card: #151a20;
+  --t-card-deep: #10151b;
+  --t-input: #171c24;
+  --t-border: #1e262e;
+  --t-border-hover: #2d3744;
+  --t-text: #d8dfe8;
+  --t-text-secondary: #8b97a5;
+  --t-text-muted: #546070;
+  --t-text-dim: #3a4450;
+  --t-favicon-bg: #181e26;
+  --t-pressed: #161e26;
+  --t-text-domain: #6b7888;
+  --t-text-micro: #4a5460;
+  --t-border-subtle: #1e262e;
+  --t-accent: #6098c8;
+  --t-shadow: rgba(0, 0, 0, 0.35);
+  --t-danger: #e05565;
+}
+
+/* ========================================
+   Theme: 竹风 (Bamboo) — dark green
+   ======================================== */
+[data-theme="bamboo"] {
+  --t-bg: #0f1410;
+  --t-card: #151c16;
+  --t-card-deep: #101610;
+  --t-input: #171e18;
+  --t-border: #1e281e;
+  --t-border-hover: #2e3a2e;
+  --t-text: #dce2d6;
+  --t-text-secondary: #98a290;
+  --t-text-muted: #5e6858;
+  --t-text-dim: #3e4838;
+  --t-favicon-bg: #182018;
+  --t-pressed: #162018;
+  --t-text-domain: #6b7868;
+  --t-text-micro: #4a5848;
+  --t-border-subtle: #1e281e;
+  --t-accent: #7aaa5a;
+  --t-shadow: rgba(0, 0, 0, 0.35);
+  --t-danger: #d06060;
 }
 
 @keyframes breathe {

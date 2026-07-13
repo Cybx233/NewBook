@@ -95,9 +95,8 @@ function handleContextmenu(e) {
 
 <template>
   <div
-    class="bookmark-card flex items-start gap-2.5 px-3.5 py-2.5 rounded-lg cursor-pointer select-none border transition-all duration-150 group"
+    class="bookmark-card flex items-start gap-2.5 px-3.5 py-2.5 rounded-lg cursor-pointer select-none border transition-all duration-150 group bg-terminal-card"
     :class="{ 'opacity-40': isDragging, 'insert-before': showInsertBefore, 'is-pressed': isPressed && !isDragging }"
-    style="background: #181715;"
     :data-bookmark-id="bookmark.id"
     :draggable="!isFolder"
     @click="handleClick"
@@ -111,7 +110,7 @@ function handleContextmenu(e) {
     @drop="onDropForeign"
   >
     <!-- Favicon / Folder icon -->
-    <div class="relative flex-shrink-0 w-[22px] h-[22px] rounded-[5px] flex items-center justify-center" style="background: #1c1c1c;">
+    <div class="relative flex-shrink-0 w-[22px] h-[22px] rounded-[5px] flex items-center justify-center" style="background: var(--t-favicon-bg)">
       <img
         v-if="bookmark.url && !showFallback"
         :src="faviconUrl"
@@ -136,7 +135,7 @@ function handleContextmenu(e) {
       <span class="text-[13px] truncate font-sans font-medium" :class="isFolder ? 'text-terminal-text-secondary' : 'text-terminal-text'">
         {{ bookmark.title }}
       </span>
-      <span v-if="!isFolder && displayDomain" class="text-[11px] text-[#555] truncate font-mono">
+      <span v-if="!isFolder && displayDomain" class="text-[11px] truncate font-mono" style="color: var(--t-text-domain)">
         {{ displayDomain }}
       </span>
     </div>
@@ -145,24 +144,25 @@ function handleContextmenu(e) {
 
 <style scoped>
 .bookmark-card {
-  border-color: #1e1e1e;
+  border-color: var(--t-border-subtle);
+  border-width: 0.5px;
 }
 .bookmark-card.insert-before {
-  border-color: #1e1e1e;
-  border-left-color: #666;
+  border-color: var(--t-border-subtle);
+  border-left-color: var(--t-accent);
 }
 .bookmark-card:hover {
-  border-color: #2e2e2e;
+  border-color: var(--t-accent);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 16px var(--t-shadow);
 }
 .bookmark-card.insert-before:hover {
-  border-color: #2e2e2e;
-  border-left-color: #666;
+  border-color: var(--t-accent);
+  border-left-color: var(--t-accent);
 }
 .bookmark-card.is-pressed {
   transform: scale(0.97);
-  background: #1e1c1a;
+  background: var(--t-pressed);
   transition: transform 80ms ease, background 80ms ease;
 }
 </style>

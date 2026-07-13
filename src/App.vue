@@ -5,8 +5,10 @@ import BookmarkFolder from './components/BookmarkFolder.vue'
 import ContextMenu from './components/ContextMenu.vue'
 import EngineEditor from './components/EngineEditor.vue'
 import { useBookmarks } from './composables/useBookmarks.js'
+import { useTheme } from './composables/useTheme.js'
 
 const { bookmarkMap, loading, topLevelFolderIds, useChildren, getTotalChildrenCount, createBookmark, updateBookmark, removeBookmark, sortMode, sortLabel, cycleSortMode, init, destroy } = useBookmarks()
+const { themeLabel, cycleTheme, init: initTheme } = useTheme()
 
 provide('bookmarkMap', bookmarkMap)
 
@@ -31,6 +33,7 @@ function closeEngineEditor() {
 }
 
 onMounted(() => {
+  initTheme()
   init()
 })
 
@@ -44,8 +47,19 @@ onUnmounted(() => {
     <!-- 顶部：搜索栏 -->
     <div class="mx-auto w-full max-w-5xl px-6 pt-20">
       <SearchBar @open-settings="openEngineEditor" />
-      <div class="flex justify-end mt-1.5">
-        <span class="text-[10px] cursor-pointer hover:text-terminal-text-secondary transition-colors select-none" style="color: #383838" @click="cycleSortMode">
+      <div class="flex justify-end mt-1.5 items-center gap-3">
+        <span
+          class="text-[10px] cursor-pointer hover:text-terminal-text-secondary transition-colors select-none"
+          style="color: var(--t-text-micro)"
+          @click="cycleTheme"
+        >
+          theme: {{ themeLabel }}
+        </span>
+        <span
+          class="text-[10px] cursor-pointer hover:text-terminal-text-secondary transition-colors select-none"
+          style="color: var(--t-text-micro)"
+          @click="cycleSortMode"
+        >
           sort: {{ sortLabel }}
         </span>
       </div>

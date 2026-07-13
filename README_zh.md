@@ -18,7 +18,7 @@ NewBook 将浏览器的新标签页变为一个干净、终端风格的控制面
 - **书签卡片** — 响应式网格排列，按文件夹分组，自动抓取网站图标和域名。
 - **拖拽排序** — 拖动书签到任意文件夹或卡片之间，自由调整位置。
 - **排序模式** — 浏览器默认 / 按名称 / 最近添加，一键循环切换。
-- **终端暗色主题** — 暖黑配色，`>_` 终端提示符，双字体排版。
+- **多主题终端美学** — 四套文学主题（墨色 / 宣纸 / 青墨 / 竹风），各有独立强调色。`>_` 提示符，双字体排版。
 - **效率快捷键** — `Ctrl+K` 聚焦搜索，中键点击文件夹批量打开全部书签，右键编辑或删除。
 
 ## 隐私说明
@@ -67,12 +67,13 @@ npm run build   # 一次性生产构建
 src/
 ├── main.js                    # 入口 — createApp，挂载到 #app
 ├── App.vue                    # 根布局，provide bookmarkMap，生命周期管理
-├── style.css                  # Tailwind 引入 + 终端主题色定义
+├── style.css                  # Tailwind 引入 + 主题 token + 四套 [data-theme] 调色板
 ├── utils/
 │   └── safeUrl.js             # URL 协议安全校验
 ├── composables/
 │   ├── useBookmarks.js        # 书签数据层（扁平 map + 实时同步）
-│   └── useSearchEngine.js     # 搜索引擎配置（预设 + storage 持久化）
+│   ├── useSearchEngine.js     # 搜索引擎配置（预设 + storage 持久化）
+│   └── useTheme.js            # 主题管理（四套主题切换 + storage.sync 持久化）
 └── components/
     ├── SearchBar.vue          # 搜索输入 + 引擎切换 + Ctrl+K 快捷键
     ├── EngineEditor.vue       # 搜索引擎 CRUD 管理弹窗

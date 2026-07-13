@@ -74,10 +74,10 @@ function onDeleteEngine(id) {
           >
             <!-- 编辑模式 -->
             <template v-if="editingId === engine.id">
-              <input v-model="editName" class="flex-1 bg-terminal-bg border border-terminal-border rounded px-2 py-1 text-xs text-terminal-text outline-none focus:border-terminal-border-hover" placeholder="名称" />
-              <input v-model="editUrl" class="flex-1 bg-terminal-bg border border-terminal-border rounded px-2 py-1 text-xs text-terminal-text outline-none focus:border-terminal-border-hover" placeholder="URL (%s)" />
-              <button class="px-2 py-1 text-xs text-terminal-text-secondary hover:text-terminal-text" @click="submitEdit">保存</button>
-              <button class="px-2 py-1 text-xs text-terminal-text-muted hover:text-terminal-text-secondary" @click="cancelEdit">取消</button>
+              <input v-model="editName" class="w-24 flex-shrink-0 bg-terminal-bg border border-terminal-border rounded px-2 py-1 text-xs text-terminal-text outline-none focus:border-terminal-border-hover" placeholder="名称" />
+              <input v-model="editUrl" class="flex-1 min-w-0 bg-terminal-bg border border-terminal-border rounded px-2 py-1 text-xs text-terminal-text outline-none focus:border-terminal-border-hover" placeholder="URL (%s)" />
+              <button class="flex-shrink-0 px-2 py-1 text-xs text-terminal-text-secondary hover:text-terminal-text" @click="submitEdit">保存</button>
+              <button class="flex-shrink-0 px-2 py-1 text-xs text-terminal-text-muted hover:text-terminal-text-secondary" @click="cancelEdit">取消</button>
             </template>
 
             <!-- 显示模式 -->
@@ -94,7 +94,7 @@ function onDeleteEngine(id) {
               <button class="px-2 py-1 text-[10px] text-terminal-text-muted hover:text-terminal-text-secondary transition-colors" @click="startEdit(engine)">编辑</button>
               <button
                 v-if="engines.length > 1"
-                class="px-2 py-1 text-[10px] text-terminal-text-muted hover:text-red-400/80 transition-colors"
+                class="px-2 py-1 text-[10px] text-terminal-text-muted transition-colors hover:text-[var(--t-danger)]"
                 @click="onDeleteEngine(engine.id)"
               >删除</button>
             </template>

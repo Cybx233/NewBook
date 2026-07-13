@@ -130,7 +130,7 @@ onUnmounted(() => {
         新增书签
       </button>
       <div class="border-t border-terminal-border my-1" />
-      <button class="w-full text-left px-3.5 py-1.5 text-xs text-red-400/80 hover:bg-red-500/10 transition-colors" @click="openDeleteConfirm">
+      <button class="w-full text-left px-3.5 py-1.5 text-xs transition-colors hover:bg-terminal-input" style="color: var(--t-danger)" @click="openDeleteConfirm">
         删除
       </button>
     </div>
@@ -187,7 +187,11 @@ onUnmounted(() => {
         <p class="text-[10px] text-terminal-text-muted mt-1">此操作不可撤销</p>
         <div class="flex justify-end gap-2 mt-5">
           <button class="px-3.5 py-1.5 text-xs text-terminal-text-muted hover:text-terminal-text-secondary transition-colors" @click="cancelDelete">取消</button>
-          <button class="px-3.5 py-1.5 text-xs bg-red-600/80 hover:bg-red-600 text-white rounded-lg transition-colors" @click="confirmDelete">删除</button>
+          <button
+            class="px-3.5 py-1.5 text-xs text-white rounded-lg transition-colors"
+            :style="{ background: 'var(--t-danger)' }"
+            @click="confirmDelete"
+          >删除</button>
         </div>
       </div>
     </div>
